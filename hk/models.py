@@ -1,9 +1,5 @@
 from django.db import models
 
-# Uncomment the following lines if you use South.
-# from south.modelsinspector import add_introspection_rules
-# add_introspection_rules([], ["^django\.contrib\.localflavor\.hk\.models\.PhoneNumberField"])
-
 
 class PhoneNumberField(models.CharField):
     description = 'Phone number'

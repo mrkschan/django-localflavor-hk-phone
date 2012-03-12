@@ -3,3 +3,11 @@ Django local flavor add-ons: HK phone number (ticket - https://code.djangoprojec
 # Install #
 
 Put hk/ directory into django/contrib/localflavor/.
+
+
+# South Integration #
+
+Add the following to your db model that uses the field.
+
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["^django\.contrib\.localflavor\.hk\.models\.PhoneNumberField"])
