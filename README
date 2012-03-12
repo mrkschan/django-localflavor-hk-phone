@@ -1,5 +1,5 @@
 Django local flavor add-ons: HK phone number (ticket - https://code.djangoproject.com/ticket/17864).
 
-= Install =
+# Install #
 
 Put hk/ directory into django/contrib/localflavor/.
