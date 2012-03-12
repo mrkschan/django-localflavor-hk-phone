@@ -6,13 +6,24 @@ from django.forms import ValidationError
 from django.utils.encoding import smart_unicode
 
 
-# Ref - http://en.wikipedia.org/wiki/Telephone_numbers_in_Hong_Kong
 hk_phone_digits_re = re.compile(r'^(?:852-?)?(\d{4})[-\.]?(\d{4})$')
 hk_special_numbers = ('999', '992', '112')
 hk_phone_prefixes = ('2', '3', '5', '6', '8', '9')
 
 
 class HKPhoneNumberField(CharField):
+    """
+    Validate Hong Kong phone number.
+    The input format can be either one of the followings:
+    'XXXX-XXXX', '852-XXXX-XXXX', '(+852) XXXX-XXXX',
+    'XXXX XXXX', or 'XXXXXXXX'.
+    The output format is 'XXXX-XXXX'.
+
+    Note: The phone number shall not start with 999, 992, or 112.
+          And, it should start with either 2, 3, 5, 6, 8, or 9.
+
+    Ref - http://en.wikipedia.org/wiki/Telephone_numbers_in_Hong_Kong
+    """
     default_error_messages = {
         'disguise': 'Phone number should not start with ' \
                     'one of the followings: %s.' % \
