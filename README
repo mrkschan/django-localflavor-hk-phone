@@ -2,7 +2,7 @@ Django local flavor add-ons: HK phone number (ticket - https://code.djangoprojec
 
 # Install #
 
-Put hk/ directory into django/contrib/localflavor/.
+Put django/contrib/localflavor/hk/ directory into django/contrib/localflavor/.
 
 
 # South Integration #
