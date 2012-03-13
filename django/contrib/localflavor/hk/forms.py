@@ -4,6 +4,7 @@ from django.core.validators import EMPTY_VALUES
 from django.forms import CharField
 from django.forms import ValidationError
 from django.utils.encoding import smart_unicode
+from django.utils.translation import ugettext_lazy as _
 
 
 hk_phone_digits_re = re.compile(r'^(?:852-?)?(\d{4})[-\.]?(\d{4})$')
@@ -25,13 +26,13 @@ class HKPhoneNumberField(CharField):
     Ref - http://en.wikipedia.org/wiki/Telephone_numbers_in_Hong_Kong
     """
     default_error_messages = {
-        'disguise': 'Phone number should not start with ' \
-                    'one of the followings: %s.' % \
-                    ', '.join(hk_special_numbers),
-        'invalid': 'Phone number must be in XXXX-XXXX format.',
-        'prefix': 'Phone number should start with ' \
-                  'one of the followings: %s.' % \
-                  ', '.join(hk_phone_prefixes),
+        'disguise': _('Phone numbers should not start with ' \
+                      'one of the followings: %s.') % \
+                      ', '.join(hk_special_numbers),
+        'invalid': _('Phone numbers must be in XXXX-XXXX format.'),
+        'prefix': _('Phone numbers should start with ' \
+                    'one of the followings: %s.') % \
+                    ', '.join(hk_phone_prefixes),
     }
 
     def __init__(self, *args, **kwargs):
